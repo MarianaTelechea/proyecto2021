@@ -1,5 +1,5 @@
 /* Global */
-.card-container{
+.container{
     margin-top: 20px;
     padding: 0 10px;
     display: flex;
@@ -8,3 +8,85 @@
     justify-content: space-between;
     align-items: flex-start;
 }
+
+  .py-5{
+    background-color:wheat;
+  }
+
+ .card{
+    margin: 1%;
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(58 59 69 / 15%);
+    padding: 1em;
+ }
+
+ .card:hover{
+   mix-blend-mode: darken;
+ }
+
+ .mt-auto{
+     align-items: center;
+ }
+
+ img.navbar-brand{
+    width: 10em;
+ }
+
+ label img.navbar-brand{
+    width: 1em;
+ }
+
+ button.borrar{
+     width: 3em;
+
+ }
+
+ button img{
+    width: 1.5em;
+ }
+
+ div.text-center h1{
+     font-size: 0.9em;
+     font-variant-caps: all-small-caps;
+ }
+
+ div.mas-pelis{
+    width: 100%;
+    text-align-last: center;
+    margin-top: 4em;
+
+ }
+
+ div.mas-pelis button{
+    border-radius: 2em;
+    font-size: 1.5em;
+    width: 2em;
+    height: 2em;
+    line-height: normal;
+ }
+
+ div.cargando{
+    width: 100%;
+    text-align-last: center;
+    font-variant-caps: all-small-caps;
+ }
+
+ div.title_catego{
+   width: 100%;
+   text-align-last: center;
+   contain: paint;
+ }
+
+ div.title_catego h3{
+   font-size: 1.75rem;
+   font-variant: all-petite-caps;
+   font-weight: 200;
+   outline: dotted;
+   padding-bottom: 0.3em;
+
+ }
+
+
+ div.button_borrar{
+   margin-bottom: 1em;
+   -webkit-writing-mode: vertical-rl;
+ }
