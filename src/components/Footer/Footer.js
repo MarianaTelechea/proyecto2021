@@ -4,8 +4,8 @@ function Footer(){
         <React.Fragment>
             <footer className='footer bg-dark'>
                 <div>
-                    <p className='m-0 text-center text-white'>Agostina Rivas</p>
-                    <p className='m-0 text-center text-white'>Mariana Telechea</p>
+                    <h4 className='m-0 text-center text-white'>Agostina Rivas</h4>
+                    <h4 className='m-0 text-center text-white'>Mariana Telechea</h4>
                 </div>
             </footer>
         </React.Fragment>
