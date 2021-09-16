@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './PeliculasPopu.css';
 import CardPopu from '../CardPopu/CardPopu'
-// import FilterField from '../FilterField/FilterField' # EL FUTURO BUSCADOR
+import FilterField from '../FilterField/FilterField' // EL FUTURO BUSCADOR
 
 class PeliculasPopu extends Component{
     constructor(props){
@@ -9,7 +9,8 @@ class PeliculasPopu extends Component{
         this.state = {
             peliculas:[],
             peliculasIniciales: [],
-            netxUrl : ''
+            nextUrl : '',
+            orientacion: 'column'
         }
     }
     componentDidMount(){
@@ -40,7 +41,7 @@ class PeliculasPopu extends Component{
         })
         .then((data) =>{
             this.setState({
-                peliculas : this.state.peliculas.concat(data.results),
+                peliculas : this.state.peliculas.concat(data.results.slice(0,10)),
                 nextUrl : 'https://api.themoviedb.org/3/movie/popular?api_key=65eadee9d6749b2ab92f01099d10deeb&language=en-US&page=2'  
             })
         })
@@ -55,24 +56,24 @@ class PeliculasPopu extends Component{
         })
     }
 
-    // //Aquí creo el método para borrar la tarjeta deseada
+    filtrarPeliculas(textoAFiltrar){ 
+        let peliculasFiltradas = this.state.peliculasIniciales.filter(pelicula=>{  // me estoy trayendo todos los datos que yo tengo adentro de ese estado. 
+            return pelicula.original_title.toLowerCase().includes(textoAFiltrar.toLowerCase()) 
+            //tolowecase():agarrar lo que se tiene atrapado y lo pone en minuscula
+            //includes() verifica si realmente el dato q me esta llegado realmente existe o no
+        }) 
+        this.setState({ //actualizo los personajes
+            peliculas : peliculasFiltradas
+        }) 
 
+        // Todos esto lo tengo que pasar al compenente hijo (filterField), quien va a llamar al metodo
+    }
 
-
-    // // Aqui creo el metodo FiltrarPersonajes
-    // filtrarPersonajes(textoAFiltrar){ 
-    //     let personajesFiltrados = this.state.personajesIniciales.filter(personaje=>{  // me estoy trayendo todos los datos que yo tengo adentro de ese estado. 
-    //         return personaje.name.toLowerCase().includes(textoAFiltrar.toLowerCase()) 
-    //         //tolowecase():agarrar lo que se tiene atrapado y lo pone en minuscula
-    //         //includes() verifica si realmente el dato q me esta llegado realmente existe o no
-    //     }) 
-    //     this.setState({ //actualizo los personajes
-    //         personajes : personajesFiltrados
-    //     }) 
-
-    //     // Todos esto lo tengo que pasar al compenente hijo (filterField), quien va a llamar al metodo
-    // }
-
+    cambiarOrientacion(orientacion){
+        this.setState({
+            orientacion: orientacion
+        })
+    }
 
 
     render(){
@@ -80,10 +81,19 @@ class PeliculasPopu extends Component{
         console.log(this.state.peliculas);
         return(
             <React.Fragment>
-                {/* <div>
-                    <FilterField filtrarPersonajes = { (texto) => this.filtrarPersonajes(texto) }/>
-                </div> */}
-                <div className='row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center'>                
+                <div className='navbusc'>
+                    <FilterField filtrarPeliculas = { (texto) => this.filtrarPeliculas(texto) }/>
+                    <div className='imagenesnav'>
+                        <img onClick={()=>this.cambiarOrientacion('column')} className='vista matriz' src="/assets/images/matriz.png" alt=""/>
+                        <img onClick={()=>this.cambiarOrientacion('row')} className='vista lista' src="/assets/images/lista.png" alt=""/>
+                    </div>
+                </div>
+                <div className={`${this.state.orientacion == 'column' ? 
+                    'row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center' : 
+                    'row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center lista'
+                }`}
+                >
+                                
                     { 
                         //Con este if ternario controlo por si tarda la carga de datos me aparezca un mensaje que dice cargando aplicación
                         this.state.peliculas.length === 0 ?
@@ -95,6 +105,7 @@ class PeliculasPopu extends Component{
                     }
                     
                 </div>
+                
                 <div className="mas-pelis">
                 <button className='btn btn-outline-dark mt-auto' onClick= {() => this.masPeliculas() } >+</button>
                 </div>
