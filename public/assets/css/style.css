@@ -74,6 +74,7 @@
    width: 100%;
    text-align-last: center;
    contain: paint;
+
  }
 
  div.title_catego h3{
@@ -82,7 +83,7 @@
    font-weight: 200;
    outline: dotted;
    padding-bottom: 0.3em;
-
+   font-weight: bold;
  }
 
 
@@ -90,3 +91,49 @@
    margin-bottom: 1em;
    -webkit-writing-mode: vertical-rl;
  }
+
+ div.navbusc{
+   padding-top: 0.3125rem;
+   padding-bottom: 0.3125rem;
+   margin-right: 1rem;
+   font-size: 1.25rem;
+   text-decoration: none;
+   white-space: nowrap;
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+
+ }
+
+ div.navbusc .vista{
+    margin-right: 5%;
+    height: 1.5em;
+    margin: 13%;
+
+ }
+
+ div.navbusc .imgbusc{
+    margin-left: 28%;
+}
+
+/* Hover boton de lista */
+
+div.lista div.h-100{
+   width: auto;
+   display: flex;
+   flex-direction: row;
+   height: 26em;
+}
+
+div.lista img.card-img-top{
+   width: auto;
+}
+
+div.lista div.button_borrar{
+   margin-right: 1em;
+}
+
+div.imagenesnav{
+   margin-right: 2%;
+}
+

@@ -28,7 +28,6 @@ function App() {
             <PeliculasTop />
         </div>
       </div>
-
       <div className='py-5'>
         <div className='container px-4 px-lg-5 mt-5'>
             <div className='title_catego'>
