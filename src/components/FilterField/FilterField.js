@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
+
 class FilterField extends Component{
     constructor(props){
         super(props) 
         this.state = {
-        
             filtrarPor : '' 
         }
     }
@@ -14,10 +14,10 @@ class FilterField extends Component{
     
     controlarCambio(evento){
         this.setState({
-            filtrarPor  : evento.target.value 
-            
-        }, () => this.props.filtrarPeliculas(this.state.filtrarPor)) 
+            filtrarPor  : evento.target.value   
+        }, () => this.props.filtrarPeliculas(this.state.filtrarPor))
     }
+
     render(){
         return (
             <React.Fragment> 
@@ -27,7 +27,7 @@ class FilterField extends Component{
                 </form>
             </React.Fragment> 
         )
-        
     }
 }
+
 export default FilterField;

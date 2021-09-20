@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 class CardUp extends Component{
     constructor(props){
         super(props)
@@ -7,6 +8,7 @@ class CardUp extends Component{
             text:'Ver más',
         }
     }
+
     viewMore(){
         if(this.state.viewMore){
             this.setState({
@@ -20,6 +22,7 @@ class CardUp extends Component{
             })            
         }
     }
+
     render(){
         return (
             <div className= 'card h-100'>
@@ -39,12 +42,12 @@ class CardUp extends Component{
                             {`Vote average: ${this.props.dataPelicula.vote_average}`} </h1>
                         <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <button className='btn btn-outline-dark mt-auto' onClick={()=>this.viewMore()}>{this.state.text}</button>
-                        </div>
-                                    
-                        </div>
+                        </div>        
+                    </div>
                 </div>
             </div>
         );
     }
 }
+
 export default CardUp;
