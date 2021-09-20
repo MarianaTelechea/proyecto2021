@@ -16,7 +16,6 @@ class PeliculasTop extends Component{
     }
 
     componentDidMount(){
-        console.log("Se cargo el componente");
         let url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=65eadee9d6749b2ab92f01099d10deeb&language=en-US&page=1';
 
         fetch(url)
