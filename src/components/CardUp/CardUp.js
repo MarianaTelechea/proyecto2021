@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 class CardUp extends Component{
     constructor(props){
         super(props)
@@ -7,6 +8,7 @@ class CardUp extends Component{
             text:'Ver más',
         }
     }
+
     viewMore(){
         if(this.state.viewMore){
             this.setState({
@@ -20,6 +22,7 @@ class CardUp extends Component{
             })            
         }
     }
+
     render(){
         return (
             <div className= 'card h-100'>
@@ -47,4 +50,5 @@ class CardUp extends Component{
         );
     }
 }
+
 export default CardUp;

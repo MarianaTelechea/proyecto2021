@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 class CardNP extends Component{
     constructor(props){
         super(props)
@@ -7,6 +8,7 @@ class CardNP extends Component{
             text:'Ver más',
         }
     }
+
     viewMore(){
         if(this.state.viewMore){
             this.setState({
@@ -20,9 +22,9 @@ class CardNP extends Component{
             })            
         }
     }
-    render(){
-       
-        return (
+   
+    render(){    
+        return(
             <div className= 'card h-100'>
             <div className='button_borrar'>
                 <button className='btn btn-outline-dark mt-auto borrar' onClick = { () => this.props.borrar(this.props.dataPelicula.id)} > X </button>
@@ -41,11 +43,11 @@ class CardNP extends Component{
                     <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <button className='btn btn-outline-dark mt-auto' onClick={()=>this.viewMore()}>{this.state.text}</button>
                     </div>
-                    
-                    </div>
+                </div>
             </div>
         </div>
         );
     }
 }
+
 export default CardNP;
