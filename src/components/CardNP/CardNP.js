@@ -21,7 +21,7 @@ class CardNP extends Component{
         }
     }
     render(){
-       // console.log(this.props);
+       
         return (
             <div className= 'card h-100'>
             <div className='button_borrar'>

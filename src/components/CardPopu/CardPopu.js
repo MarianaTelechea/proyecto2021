@@ -25,7 +25,7 @@ class CardPopu extends Component{
     }
 
     render(){
-       // console.log(this.props);
+       
         return (
             <div className= 'card h-100'>
             <div className='button_borrar'>
@@ -56,6 +56,3 @@ class CardPopu extends Component{
 
 export default CardPopu;
 
-// Teoria:
-// button borrar: mediante el evento onClick() llama a la propiedad borrar. Para esto, hacemos un arrow function para poder invocar al metodo. Como componente hijo el metodo ya llegó mediante la props. Entonces lo que hacemos es invocar al metodo mediante un this.props.borrar, mandadole como parametro al componente padre el id -> this.props.borrar(this.props.dataPeliculas.id)
-// El componente padre tiene todos los datos, pero el componente hijo es el que tiene el detalle de ese dato
