@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './PeliculasNP.css';
 import CardNP from '../CardNP/CardNP'
 import FilterField from '../FilterField/FilterField'
+
 class PeliculasNP extends Component{
     constructor(){
         super();
@@ -13,6 +14,7 @@ class PeliculasNP extends Component{
             render: ''
         }
     }
+
     componentDidMount(){
         console.log("Se cargo el componente");
         let url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=65eadee9d6749b2ab92f01099d10deeb&language=en-US&page=1';
@@ -30,6 +32,7 @@ class PeliculasNP extends Component{
             })
             .catch(error => console.log(error))
         }
+
     masPeliculas(){
         let url = this.state.nextUrl
         fetch(url)
@@ -43,6 +46,7 @@ class PeliculasNP extends Component{
             })
         })
     }
+
     borrarTarjeta(id){
         let peliculasQuedan = this.state.peliculas.filter(pelicula =>{
             return pelicula.id !== id
@@ -51,10 +55,10 @@ class PeliculasNP extends Component{
             peliculas : peliculasQuedan 
         })
     }
+
     filtrarPeliculas(textoAFiltrar){ 
         let peliculasFiltradas = this.state.peliculasIniciales.filter(pelicula=>{  
             return pelicula.original_title.toLowerCase().includes(textoAFiltrar.toLowerCase()) 
-            
         }) 
         this.setState({ 
             peliculas : peliculasFiltradas,
@@ -63,15 +67,15 @@ class PeliculasNP extends Component{
         setTimeout(function() { 
             this.setState({render: true}) 
         }.bind(this), 1000)
-        
     }
+
     cambiarOrientacion(orientacion){
         this.setState({
             orientacion: orientacion
         })
     }
+
     render(){
-        
         return(
             <React.Fragment>
                 <div className='navbusc'>
@@ -84,35 +88,29 @@ class PeliculasNP extends Component{
                 <div className={`${this.state.orientacion === 'column' ? 
                     'row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center' : 
                     'row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center lista'
-                }`}>
-                                
+                }`}>             
                     { 
-                        
                         this.state.peliculas.length === 0 ?
-                        
                         <div className="div">
-                        {this.state.render ?
-                        <div class="alert alert-danger d-flex align-items-center" role="alert">
-                            <div> No hay resultados :(</div>
-                        </div>:
-                        <button class="spinner btn btn-primary" id="mydiv" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            {this.state.render ?
+                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                <div> No hay resultados :(</div>
+                            </div>:
+                            <button class="spinner btn btn-primary" id="mydiv" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Loading...
-                        </button>}
-                         </div>:
-                        this.state.peliculas.map((pelicula, index)=><CardNP key={pelicula.original_title + index} dataPelicula={pelicula}
-                        
-                        borrar = {(idEliminar) => this.borrarTarjeta(idEliminar) } 
+                            </button>}
+                        </div>:
+                        this.state.peliculas.map((pelicula, index)=><CardNP key={pelicula.original_title + index} dataPelicula={pelicula} borrar = {(idEliminar) => this.borrarTarjeta(idEliminar) } 
                         />) 
                     }  
                 </div>
                 {
                     this.state.peliculas.length !== 0 ?
                     <div className="mas-pelis">
-                    <button className='btn btn-outline-dark mt-auto' onClick= {() => this.masPeliculas()} >+</button>
+                        <button className='btn btn-outline-dark mt-auto' onClick= {() => this.masPeliculas()} >+</button>
                     </div>:
                     ''
-                    
                 }
             </React.Fragment>
         )
