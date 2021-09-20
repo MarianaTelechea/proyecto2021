@@ -48,23 +48,22 @@ class PeliculasNP extends Component{
             return pelicula.id !== id
         })
         this.setState({
-            peliculas : peliculasQuedan //es un estado
+            peliculas : peliculasQuedan 
         })
     }
     filtrarPeliculas(textoAFiltrar){ 
-        let peliculasFiltradas = this.state.peliculasIniciales.filter(pelicula=>{  // me estoy trayendo todos los datos que yo tengo adentro de ese estado. 
+        let peliculasFiltradas = this.state.peliculasIniciales.filter(pelicula=>{  
             return pelicula.original_title.toLowerCase().includes(textoAFiltrar.toLowerCase()) 
-            //tolowecase():agarrar lo que se tiene atrapado y lo pone en minuscula
-            //includes() verifica si realmente el dato q me esta llegado realmente existe o no
+            
         }) 
-        this.setState({ //actualizo los personajes
+        this.setState({ 
             peliculas : peliculasFiltradas,
             render: false
         }) 
-        setTimeout(function() { //Start the timer
-            this.setState({render: true}) //After 1 second, set render to true
+        setTimeout(function() { 
+            this.setState({render: true}) 
         }.bind(this), 1000)
-        // Todos esto lo tengo que pasar al compenente hijo (filterField), quien va a llamar al metodo
+        
     }
     cambiarOrientacion(orientacion){
         this.setState({
@@ -72,8 +71,7 @@ class PeliculasNP extends Component{
         })
     }
     render(){
-        console.log("Rendericé");
-        console.log(this.state.peliculas);
+        
         return(
             <React.Fragment>
                 <div className='navbusc'>
@@ -89,9 +87,9 @@ class PeliculasNP extends Component{
                 }`}>
                                 
                     { 
-                        //Con este if ternario controlo por si tarda la carga de datos me aparezca un mensaje que dice cargando aplicación
+                        
                         this.state.peliculas.length === 0 ?
-                        // <div className='cargando'><h4>Cargando aplicación...</h4></div> :
+                        
                         <div className="div">
                         {this.state.render ?
                         <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -103,8 +101,8 @@ class PeliculasNP extends Component{
                         </button>}
                          </div>:
                         this.state.peliculas.map((pelicula, index)=><CardNP key={pelicula.original_title + index} dataPelicula={pelicula}
-                        //Aqui debemos pasarle el método (borrarTarjeta) al hijo
-                        borrar = {(idEliminar) => this.borrarTarjeta(idEliminar) } // dentro de la propiedad borrar le pasamos al hijo, como si fuese una props més, el método de borrarTarjeta(). Dentro de este le pasamos unas props, donde le pasamos un método (idEliminar). Despues de la "=>" llamo al metodo que quiero pasarle al hijo con el this.borrarTajeta(). El idEliminar es el partametro que tiene que mandar el hijo al padre para poder eliminar la tarjeta
+                        
+                        borrar = {(idEliminar) => this.borrarTarjeta(idEliminar) } 
                         />) 
                     }  
                 </div>
